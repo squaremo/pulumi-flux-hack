@@ -13,7 +13,7 @@ spec:
   stack: squaremo/podinfo/autoapi
   gitRepo:
     projectRepo: https://github.com/squaremo/pulumi-flux-hack
-    branch: main
+    branch: refs/heads/main
   repoDir: ./pulumi
   config:
     namespace: autoapi # this tells the program to deploy to the namespace "autoapi"
