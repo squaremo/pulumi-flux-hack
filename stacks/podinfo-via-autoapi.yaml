@@ -5,10 +5,11 @@ metadata:
   namespace: default
 spec:
   envRefs:
-  - type: secret
-    secret:
-      key: PULUMI_ACCESS_TOKEN
-      name: pulumi-token
+    PULUMI_ACESS_TOKEN:
+      type: secret
+      secret:
+        name: pulumi-token
+        key: PULUMI_ACCESS_TOKEN
   stack: squaremo/podinfo/autoapi
   projectRepo: https://github.com/squaremo/pulumi-flux-hack
   repoDir: ./pulumi
