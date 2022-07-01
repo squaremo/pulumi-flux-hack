@@ -20,7 +20,9 @@ const deployment = new k8s.apps.v1.Deployment("podinfo", {
                 containers: [{
                     name: "podinfo",
                     image: "ghcr.io/stefanprodan/podinfo:6.1.6",
+                    command: ['./podinfo'],
                     args: [
+                        '--port=9898',
                         '--ui-logo=https://www.pulumi.com/logos/brand/pulumipus-8bit.png',
                     ]
                 }]
