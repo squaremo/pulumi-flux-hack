@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   envRefs:
-    PULUMI_ACESS_TOKEN:
+    PULUMI_ACCESS_TOKEN:
       type: Secret
       secret:
         name: pulumi-token
