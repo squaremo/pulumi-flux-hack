@@ -16,7 +16,15 @@ const deployment = new k8s.apps.v1.Deployment("podinfo", {
         replicas: 1,
         template: {
             metadata: { labels: appLabels },
-            spec: { containers: [{ name: "podinfo", image: "ghcr.io/stefanprodan/podinfo:6.1.6" }] }
+            spec: {
+                containers: [{
+                    name: "podinfo",
+                    image: "ghcr.io/stefanprodan/podinfo:6.1.6",
+                    args: [
+                        '--ui-logo=https://www.pulumi.com/logos/brand/pulumipus-8bit.png',
+                    ]
+                }]
+            }
         }
     }
 });
