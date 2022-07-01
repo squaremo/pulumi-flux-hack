@@ -1,0 +1,28 @@
+---
+# The operator will need to be able to read Flux sources
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: flux-source-access
+rules:
+- apiGroups:
+  - "source.toolkit.fluxcd.io"
+  resources:
+  - gitrepositories
+  - buckets
+  verbs:
+  - get
+  - list
+  - watch
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pulumi-flux-access
+subjects:
+- kind: ServiceAccount
+  name: pulumi-kubernetes-operator
+roleRef:
+  kind: Role
+  name: flux-source-access
+  apiGroup: rbac.authorization.k8s.io
