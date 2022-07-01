@@ -34,28 +34,6 @@ const service = new k8s.core.v1.Service("podinfo", {
 });
 
 // From https://kubernetes.github.io/ingress-nginx/examples/customization/configuration-snippets/#ingress
-
-// apiVersion: networking.k8s.io/v1
-// kind: Ingress
-// metadata:
-//   name: nginx-configuration-snippet
-//   annotations:
-//     nginx.ingress.kubernetes.io/configuration-snippet: |
-//       more_set_headers "Request-Id: $req_id";
-// spec:
-//   ingressClassName: nginx
-//   rules:
-//   - host: custom.configuration.com
-//     http:
-//       paths:
-//       - path: /
-//         pathType: Prefix
-//         backend:
-//           service:
-//             name: http-svc
-//             port:
-//               number: 80
-//
 // The 'rewrite' annotation comes from
 // https://github.com/kubernetes/ingress-nginx/blob/main/docs/examples/rewrite/README.md.
 
