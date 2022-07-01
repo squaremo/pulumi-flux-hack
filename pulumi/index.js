@@ -5,12 +5,6 @@ const k8s = require("@pulumi/kubernetes");
 const config = new pulumi.Config();
 const ns = config.require('namespace');
 
-const namespace = new k8s.core.v1.Namespace('podinfo-ns', {
-    metadata: {
-        name: ns,
-    },
-});
-
 const appLabels = { app: "podinfo" };
 
 const deployment = new k8s.apps.v1.Deployment("podinfo", {
