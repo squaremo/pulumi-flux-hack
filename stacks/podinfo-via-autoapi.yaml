@@ -3,6 +3,65 @@ kind: Namespace
 metadata:
   name: autoapi
 ---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pulumi-stack
+  namespace: autoapi
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - services
+  - configmaps
+  - secrets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pulumi-stack
+  namespace: autoapi
+subjects:
+- kind: ServiceAccount
+  name: pulumi-kubernetes-operator
+  namespace: default
+roleRef:
+  kind: Role
+  name: pulumi-stack
+  apiGroup: rbac.authorization.k8s.io
+---
 apiVersion: pulumi.com/v1
 kind: Stack
 metadata:
