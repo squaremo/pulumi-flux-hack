@@ -4,7 +4,12 @@ metadata:
   name: podinfo-autoapi
   namespace: default
 spec:
-  accessTokenSecret: pulumi-token
+  envRefs:
+    PULUMI_ACESS_TOKEN:
+      type: Secret
+      secret:
+        name: pulumi-token
+        key: PULUMI_ACCESS_TOKEN
   stack: squaremo/podinfo/autoapi
   gitRepo:
     projectRepo: https://github.com/squaremo/pulumi-flux-hack
