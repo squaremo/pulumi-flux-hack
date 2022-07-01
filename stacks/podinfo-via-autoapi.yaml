@@ -11,8 +11,9 @@ spec:
         name: pulumi-token
         key: PULUMI_ACCESS_TOKEN
   stack: squaremo/podinfo/autoapi
-  projectRepo: https://github.com/squaremo/pulumi-flux-hack
+  gitRepo:
+    projectRepo: https://github.com/squaremo/pulumi-flux-hack
+    branch: main
   repoDir: ./pulumi
-  branch: main
   config:
     namespace: autoapi # this tells the program to deploy to the namespace "autoapi"
